@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSSD - Domov</title>
+    <style>
+        :root {
+            --bg-color: #0f1110;
+            --card-bg: #161917;
+            --primary: #1e3b24; /* Tradičná šerifská zelená */
+            --primary-light: #2d5a37;
+            --accent: #c5a059;  /* Tlmená zlatá/mosadzná */
+            --text: #f0f2f1;
+            --text-muted: #a3a8a5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigácia */
+        nav {
+            background-color: rgba(22, 25, 23, 0.95);
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .nav-logo {
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+
+        /* Hero Sekcia (Úvodný obrovský banner) */
+        .hero {
+            background: linear-gradient(rgba(15, 17, 16, 0.75), rgba(15, 17, 16, 0.95)), 
+                        url('https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?q=80&w=1200') no-repeat center center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+
+        .hero-badge {
+            width: 120px;
+            height: 120px;
+            background-color: var(--accent);
+            margin: 0 auto 20px auto;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-color);
+            font-weight: bold;
+            font-size: 1.8rem;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin: 0 auto 30px auto;
+            max-width: 600px;
+            font-style: italic;
+        }
+
+        /* Hlavný obsah */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2rem; }
+        }
+
+        /* Karty a sekcie */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #252a27;
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-title span {
+            font-size: 0.8rem;
+            background-color: var(--primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        /* Novinky / Tlačové správy */
+        .news-item {
+            border-bottom: 1px solid #252a27;
+            padding: 15px 0;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-meta {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .news-item h3 {
+            margin: 0 0 10px 0;
+            color: #fff;
+        }
+
+        /* Rýchle odkazy / Widgety na boku */
+        .widget-btn {
+            display: block;
+            background-color: var(--primary);
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background 0.3s, transform 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .widget-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .widget-btn.emergency {
+            background-color: #8b0000;
+        }
+
+        .widget-btn.emergency:hover {
+            background-color: #b30000;
+        }
+
+        /* Päta webu */
+        footer {
+            background-color: #090a0a;
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #161917;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+   <nav>
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">LS<span>SD</span></a>
+        <div class="nav-links">
+            <a href="index.html" class="active">Domov</a>
+            <a href="divize.html">Divízie</a>
+            <a href="vedeni.html">Vedenie</a>
+            <a href="akademie.html">Nábor</a>
+        </div>
+    </div>
+</nav>
+
+    <div class="hero">
+        <div class="hero-badge">★</div>
+        <h1>Los Santos Sheriff's Department</h1>
+        <p>"To Protect and to Serve since 1850"</p>
+    </div>
+
+    <div class="main-container">
+        
+        <main>
+            <div class="card">
+                <h2 class="card-title">Slovo šerifa</h2>
+                <p>Vítam vás na oficiálnych stránkach Los Santos Sheriff's Department. Naším cieľom je udržiavať bezpečné prostredie pre všetkých obyvateľov a návštevníkov nášho okresu. Každý deň naši muži a ženy v uniformách riskujú svoje životy, aby zabezpečili poriadok v uliciach mesta aj v odľahlých oblastiach Blaine County.</p>
+                <p>Spolupráca s komunitou je základným pilierom našej práce. Ak máte akékoľvek informácie o nelegálnej činnosti, alebo potrebujete našu pomoc, neváhajte nás kontaktovať.</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Najnovšie tlačové správy <span>Aktualizované</span></h2>
+                
+                <div class="news-item">
+                    <div class="news-meta">22. Máj 2026 • Tlačové oddelenie</div>
+                    <h3>Zvýšené hliadky v oblasti Sandy Shores</h3>
+                    <p>Z dôvodu nárastu drobných krádeží a rušenia nočného pokoja zvyšuje LSSD prítomnosť hliadkových vozidiel v okolí Sandy Shores a Alamo Sea. Žiadame občanov o zvýšenú ostražitosť.</p>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-meta">18. Máj 2026 • Dopravná divízia</div>
+                    <h3>Úspešná akcia zameraná na rýchlosť na diaľnici Senora</h3>
+                    <p>Počas uplynulého víkendu divízia HSI zaistila celkovo 12 vodičských preukazov za hrubé porušenie maximálnej povolenej rýchlosti. Bezpečnosť na cestách zostáva našou prioritou.</p>
+                </div>
+            </div>
+        </main>
+
+        <aside>
+            <div class="card" style="padding: 15px;">
+                <a href="#" class="widget-btn emergency">🚨 TIESŇOVÉ VOLANIE: 911</a>
+                <a href="#" class="widget-btn">📝 PODAŤ PRIHLÁŠKU (NÁBOR)</a>
+                <a href="#" class="widget-btn">⚖️ NAHLÁSIŤ TRESTNÝ ČIN</a>
+            </div>
+
+            <div class="card">
+                <h3 style="color: #fff; margin-top:0;">Pracovná doba stanice</h3>
+                <p style="margin-bottom: 5px; color: var(--text-muted);"><strong>Paleto Bay Station:</strong></p>
+                <p style="margin-top: 0; font-size: 0.9rem;">Nepretržite (24/7)</p>
+                
+                <p style="margin-bottom: 5px; color: var(--text-muted);"><strong>Administratívne okienko:</strong></p>
+                <p style="margin-top: 0; font-size: 0.9rem;">Po - Pia: 08:00 - 16:00</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Los Santos Sheriff's Department | Vytvorené pre Roleplay účely.</p>
+    </footer>
+
+</body>
+</html>

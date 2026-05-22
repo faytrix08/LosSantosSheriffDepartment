@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSSD - Vedenie</title>
+    <style>
+        :root {
+            --bg-color: #0f1110;
+            --card-bg: #161917;
+            --primary: #1e3b24;
+            --primary-light: #2d5a37;
+            --accent: #c5a059;
+            --text: #f0f2f1;
+            --text-muted: #a3a8a5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigácia */
+        nav {
+            background-color: rgba(22, 25, 23, 0.95);
+            border-bottom: 2px solid var(--accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .nav-logo {
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent);
+        }
+
+        /* Hlavička */
+        .page-header {
+            background: linear-gradient(rgba(15, 17, 16, 0.85), rgba(15, 17, 16, 0.95)), 
+                        url('https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?q=80&w=1200') no-repeat center center/cover;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .page-header p {
+            color: var(--accent);
+            margin: 10px 0 0 0;
+            font-size: 1.1rem;
+        }
+
+        /* Kontajner pre štruktúru vedenia */
+        .management-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hierarchy-level {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hierarchy-level h2 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #252a27;
+            padding-bottom: 5px;
+        }
+
+        /* Mriežka pre karty členov */
+        .command-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .member-card {
+            background-color: var(--card-bg);
+            border: 1px solid #252a27;
+            border-top: 4px solid var(--accent);
+            border-radius: 4px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            background-color: #252a27;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            border: 2px solid var(--primary);
+        }
+
+        .member-name {
+            font-size: 1.15rem;
+            color: #fff;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+        }
+
+        .member-rank {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .member-duty {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid #252a27;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        /* Päta stránky */
+        footer {
+            background-color: #090a0a;
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #161917;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+    <div class="nav-container">
+        <a href="vedeni.html" class="nav-logo">LS<span>SD</span></a>
+        <div class="nav-links">
+            <a href="index.html" class="active">Domov</a>
+            <a href="divize.html">Divízie</a>
+            <a href="vedeni.html">Vedenie</a>
+            <a href="akademie.html">Nábor</a>
+        </div>
+    </div>
+</nav>
+
+    <div class="page-header">
+        <h1>Vedenie Oddelenia</h1>
+        <p>Kompletná velitelská štruktúra Los Santos Sheriff's Department</p>
+    </div>
+
+    <div class="management-container">
+
+        <div class="hierarchy-level">
+            <h2>Sheriff</h2>
+            <div class="command-grid">
+                <div class="member-card" style="border-top-color: #fff; width: 280px;">
+                    <div class="member-avatar">🦅</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Sheriff</div>
+                    <div class="member-duty">Najvyšší predstaviteľ zboru. Zodpovedá za celkový chod, legislatívu a smerovanie LSSD.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hierarchy-level">
+            <h2>Executive Command</h2>
+            <div class="command-grid">
+                <div class="member-card">
+                    <div class="member-avatar">⭐</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Undersheriff</div>
+                    <div class="member-duty">Druhý najvyšší dôstojník, ktorý priamo riadi operačnú činnosť celého departmentu.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hierarchy-level">
+            <h2>Assistant Sheriff</h2>
+            <div class="command-grid">
+                <div class="member-card">
+                    <div class="member-avatar">✨</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Assistant Sheriff</div>
+                    <div class="member-duty">Zodpovedá za administratívnu zložku, interné záležitosti a personálnu politiku.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hierarchy-level">
+            <h2>Division Chiefs</h2>
+            <div class="command-grid">
+                <div class="member-card">
+                    <div class="member-avatar">🌟</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Division Chief</div>
+                    <div class="member-duty">Veliteľ veľkých celkov a divízií (napr. Patrol Division alebo Detective Bureau).</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hierarchy-level">
+            <h2>Area Commanders</h2>
+            <div class="command-grid">
+                <div class="member-card">
+                    <div class="member-avatar">⚜️</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Area Commander</div>
+                    <div class="member-duty">Dohliada na strategické operácie a kontrolu staníc v pridelenej geografickej oblasti.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hierarchy-level">
+            <h2>Station Commanders (Captains)</h2>
+            <div class="command-grid">
+                <div class="member-card">
+                    <div class="member-avatar">⠠⠤</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Captain</div>
+                    <div class="member-duty">Veliteľ šerifovej stanice Paleto Bay. Zodpovedá za personál a lokálne hliadky.</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">⠠⠤</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Captain</div>
+                    <div class="member-duty">Veliteľ špeciálnych operácií. Dohliada na taktické a podporné divízie.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hierarchy-level">
+            <h2>Lieutenants</h2>
+            <div class="command-grid">
+                <div class="member-card">
+                    <div class="member-avatar">📋</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Lieutenant</div>
+                    <div class="member-duty">Zástupca veliteľa stanice. Plánuje zmeny, schvaľuje správy a riadi administratívu.</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">📋</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Lieutenant</div>
+                    <div class="member-duty">Operačný dôstojník. Koordinuje väčšie policajné akcie a incidenty priamo v teréne.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hierarchy-level">
+            <h2>Supervisory Staff (Sergeants)</h2>
+            <div class="command-grid">
+                
+                <div class="member-card">
+                    <div class="member-avatar">🔰</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Sergeant</div>
+                    <div class="member-duty">Field Supervisor – Dohľad a vedenie hliadok priamo v teréne.</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">🔰</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Sergeant</div>
+                    <div class="member-duty">Field Supervisor – Kontrola taktických postupov a podpora jednotiek.</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">🔰</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Sergeant</div>
+                    <div class="member-duty">Training Sergeant – Výcvik kadetov a permanentné vzdelávanie zástupcov.</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">🔰</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Sergeant</div>
+                    <div class="member-duty">Administrative Sergeant – Správa papierovania, zmien a chodu stanice.</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">🔰</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Sergeant</div>
+                    <div class="member-duty">Internal Affairs – Riešenie sťažností a interné vyšetrovanie dôstojníkov.</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">🔰</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Sergeant</div>
+                    <div class="member-duty">SEB Supervisor – Taktický veliteľ tímu počas rizikových operácií.</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">🔰</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Sergeant</div>
+                    <div class="member-duty">K9 Supervisor – Vedúci kynologického oddelenia a psovodov.</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">🔰</div>
+                    <div class="member-name">Meno_Priezvisko</div>
+                    <div class="member-rank">Sergeant</div>
+                    <div class="member-duty">Traffic Bureau Supervisor – Dohľad nad bezpečnosťou ciest a diaľnic.</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Los Santos Sheriff's Department | Vytvorené pre Roleplay účely.</p>
+    </footer>
+
+</body>
+</html>
